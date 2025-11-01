@@ -1,5 +1,6 @@
-package dev.java10x.CadastroDeNinjas;
+package dev.java10x.CadastroDeNinjas.Ninjas;
 
+import dev.java10x.CadastroDeNinjas.Missoes.MissaoModel;
 import jakarta.persistence.*;
 
 // Ele transforma uma classe numa Entidade do BD
@@ -11,7 +12,12 @@ public class NinjaModel {
     private Long id;
     private String nome;
     private String email;
-    private  int idade;
+    private int idade;
+
+    // Um ninja tem uma única missão.
+    @ManyToOne
+    @JoinColumn(name = "missao_id") // Foreign_key
+    private MissaoModel missao;
 
     public NinjaModel() {
     }
