@@ -15,12 +15,20 @@ import lombok.NoArgsConstructor;
 public class NinjaModel {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id")
     private Long id;
+
+    @Column(name = "nome")
     private String nome;
 
     // Aqui com essa anotação. Estamos falando que ela é única
-    @Column(unique = true)
+    @Column(unique = true, name = "email")
     private String email;
+
+    @Column(name = "imgUrl")
+    private String imgUrl;
+
+    @Column(name = "idade")
     private int idade;
 
     // Um ninja tem uma única missão.
