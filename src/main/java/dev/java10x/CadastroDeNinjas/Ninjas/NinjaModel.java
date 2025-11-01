@@ -17,6 +17,9 @@ public class NinjaModel {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String nome;
+
+    // Aqui com essa anotação. Estamos falando que ela é única
+    @Column(unique = true)
     private String email;
     private int idade;
 
