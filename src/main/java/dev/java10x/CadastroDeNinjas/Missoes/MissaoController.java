@@ -4,7 +4,7 @@ import org.springframework.web.bind.annotation.*;
 
 // localhost:8080/missao
 @RestController
-@RequestMapping("missao")
+@RequestMapping("/missao")
 public class MissaoController {
 
     // GET -- Mandar uma requisição para mostrar as missões
