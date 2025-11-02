@@ -1,0 +1,2 @@
+ALTER TABLE tb_missao
+DROP COLUMN data;

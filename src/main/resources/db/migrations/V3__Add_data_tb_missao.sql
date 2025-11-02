@@ -1,0 +1,2 @@
+ALTER TABLE tb_missao
+ADD COLUMN data VARCHAR(255);
