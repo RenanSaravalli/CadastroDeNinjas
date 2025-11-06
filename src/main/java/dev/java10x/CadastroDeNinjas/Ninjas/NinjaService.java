@@ -16,7 +16,7 @@ public class NinjaService {
 
     // listar todos os meus ninjas
     public List<NinjaModel> listarNinjas() {
-        return ninjarepository.findall();
+        return ninjaRepository.findAll();
     }
 
     // Listar ninja por Id
