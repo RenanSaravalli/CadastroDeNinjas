@@ -2,21 +2,35 @@ package dev.java10x.CadastroDeNinjas.Missoes;
 
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+import java.util.Optional;
+
 // localhost:8080/missao
 @RestController
 @RequestMapping("/missao")
 public class MissaoController {
 
+    private MissaoService missaoService;
+
+    public MissaoController(MissaoService missaoService) {
+        this.missaoService = missaoService;
+    }
+
     // GET -- Mandar uma requisição para mostrar as missões
     @GetMapping("/listar")
-    public String listarMissoes() {
-        return "Missões listadas com sucesso";
+    public List<MissaoModel> listarMissoes() {
+        return missaoService.listarMissoes();
+    }
+
+    @GetMapping("/listar/{id}")
+    public MissaoModel listarMissaoPorId(@PathVariable Long id) {
+        return missaoService.listarMissaoPorId(id);
     }
 
     // post -- Mandar uma requisição para criar as missões
     @PostMapping("/criar")
-    public String criarMissao() {
-        return "Missão criado com sucesso";
+    public MissaoModel criarMissao(@RequestBody MissaoModel missaoModel) {
+        return missaoService.criarMissao(missaoModel);
     }
 
     // PUT -- Mandar uma requisição para ALterar as missões
@@ -26,9 +40,9 @@ public class MissaoController {
     }
 
     // DELETE -- Mandar uma requisição para Deletar as missões
-    @DeleteMapping("/deletar")
-    public String deletarMissao() {
-        return "Missão deletada com sucesso";
+    @DeleteMapping("/deletar/{id}")
+    public void deletarMissao(@PathVariable Long id) {
+        missaoService.deletarMissao(id);
     }
 
 }
