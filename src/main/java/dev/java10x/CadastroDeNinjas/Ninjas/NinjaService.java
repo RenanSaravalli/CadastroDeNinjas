@@ -9,9 +9,11 @@ import java.util.Optional;
 public class NinjaService {
     //aqui tb podemos usar a anotação @Autowired para iniciar
     private NinjaRepository ninjaRepository;
+    private NinjaMapper ninjaMapper;
 
-    public NinjaService(NinjaRepository ninjaRepository) {
+    public NinjaService(NinjaRepository ninjaRepository, NinjaMapper ninjaMapper) {
         this.ninjaRepository = ninjaRepository;
+        this.ninjaMapper = ninjaMapper;
     }
 
     // listar todos os meus ninjas
@@ -27,8 +29,14 @@ public class NinjaService {
     }
 
     // Criar um novo ninja.
-    public NinjaModel criarNinja(NinjaModel ninja) {
-        return ninjaRepository.save(ninja);
+    public NinjaDTO criarNinja(NinjaDTO ninjaDTO) {
+        // Mapeamos um DTO para model para usar no ninjaRepository
+        // usar o JPA o métod save()
+        NinjaModel ninja = ninjaMapper.map(ninjaDTO);
+        ninjaRepository.save(ninja);
+        // Mapeamos novamente, mas agora para DTO para retornar no métod
+        return ninjaMapper.map(ninja);
+
     }
 
     // Deletar o ninja (tem que ser um métod void)
