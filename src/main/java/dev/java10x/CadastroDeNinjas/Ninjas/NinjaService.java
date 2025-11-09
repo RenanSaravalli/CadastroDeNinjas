@@ -9,8 +9,8 @@ import java.util.stream.Collectors;
 @Service
 public class NinjaService {
     //aqui tb podemos usar a anotação @Autowired para iniciar
-    private NinjaRepository ninjaRepository;
-    private NinjaMapper ninjaMapper;
+    private final NinjaRepository ninjaRepository;
+    private final NinjaMapper ninjaMapper;
 
     public NinjaService(NinjaRepository ninjaRepository, NinjaMapper ninjaMapper) {
         this.ninjaRepository = ninjaRepository;
