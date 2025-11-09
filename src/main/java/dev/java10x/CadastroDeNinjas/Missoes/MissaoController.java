@@ -18,25 +18,25 @@ public class MissaoController {
 
     // GET -- Mandar uma requisição para mostrar as missões
     @GetMapping("/listar")
-    public List<MissaoModel> listarMissoes() {
+    public List<MissaoDTO> listarMissoes() {
         return missaoService.listarMissoes();
     }
 
     @GetMapping("/listar/{id}")
-    public MissaoModel listarMissaoPorId(@PathVariable Long id) {
+    public MissaoDTO listarMissaoPorId(@PathVariable Long id) {
         return missaoService.listarMissaoPorId(id);
     }
 
     // post -- Mandar uma requisição para criar as missões
     @PostMapping("/criar")
-    public MissaoModel criarMissao(@RequestBody MissaoModel missaoModel) {
+    public MissaoDTO criarMissao(@RequestBody MissaoDTO missaoModel) {
         return missaoService.criarMissao(missaoModel);
     }
 
     // PUT -- Mandar uma requisição para ALterar as missões
-    @PutMapping("/alterar")
-    public String alterarMissao() {
-        return "Missão alterada com sucesso";
+    @PutMapping("/alterar/{id}")
+    public MissaoDTO alterarMissao(@PathVariable Long id, @RequestBody MissaoDTO missaoAtualizada) {
+        return missaoService.atualizarMissao(id, missaoAtualizada);
     }
 
     // DELETE -- Mandar uma requisição para Deletar as missões
