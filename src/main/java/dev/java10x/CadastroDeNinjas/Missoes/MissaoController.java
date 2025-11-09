@@ -10,7 +10,7 @@ import java.util.Optional;
 @RequestMapping("/missao")
 public class MissaoController {
 
-    private MissaoService missaoService;
+    private final MissaoService missaoService;
 
     public MissaoController(MissaoService missaoService) {
         this.missaoService = missaoService;
